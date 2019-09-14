@@ -10,8 +10,9 @@ output: html_document
 library(tidyverse)
 ```
 
-# Problem 1
+# Problem 1:
 
+### Create dataframe
 ```{r}
 
 hw1p1_df = tibble(
@@ -22,7 +23,33 @@ hw1p1_df = tibble(
   
 )
 
+```
+
+### Take mean of variables in dataframe
+
+```{r}
+
+mean(pull(hw1p1_df, rsamp))
+mean(pull(hw1p1_df, log_vec))
+mean(pull(hw1p1_df, char_vec))
+mean(pull(hw1p1_df, fac_vec))
 
 ```
+
+It was only possible to take the mean of the numeric variable "rsamp" (mean = `r round(mean(pull(hw1p1_df, rsamp)),3)`), and the logical variable "log_vec", (mean = `r round(mean(pull(hw1p1_df, log_vec)),3)`).
+
+
+### Convert variables to numeric
+
+```{r, eval = F}
+
+as.numeric(pull(hw1p1_df, log_vec))
+as.numeric(pull(hw1p1_df, char_vec))
+as.numeric(pull(hw1p1_df, fac_vec))
+```
+
+a. The logical vector converts to 0s and 1s; able to take the mean of 0s and 1s in previous step.
+b. The character vector will not convert to a numeric variable; cant take the mean in previous step.
+c. The factor variable evaluates the input as a whole and assigns numeric values to each category alphabetically; even though categories can be numeric, taking the mean of a discrete categorical variable organized alphabetically is meaningless.
 
 
