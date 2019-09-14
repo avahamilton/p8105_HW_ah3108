@@ -5,8 +5,24 @@ date: "9/14/2019"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+
+```{r}
+library(tidyverse)
 ```
 
-## R Markdown
+# Problem 1
+
+```{r}
+
+hw1p1_df = tibble(
+  rsamp = rnorm(8),
+  log_vec = rsamp > 0,
+  char_vec = c("a", "b", "c", "d", "e", "f", "g", "h"),
+  fac_vec = factor(c("lev1", "lev3", "lev2", "lev2", "lev2", "lev1", "lev3", "lev3"))
+  
+)
+
+
+```
+
+
