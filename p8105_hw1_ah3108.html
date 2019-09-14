@@ -393,9 +393,9 @@ summary {
 <div id="take-mean-of-variables-in-dataframe" class="section level3">
 <h3>Take mean of variables in dataframe</h3>
 <pre class="r"><code>mean(pull(hw1p1_df, rsamp))</code></pre>
-<pre><code>## [1] 0.1993448</code></pre>
+<pre><code>## [1] -0.2900299</code></pre>
 <pre class="r"><code>mean(pull(hw1p1_df, log_vec))</code></pre>
-<pre><code>## [1] 0.375</code></pre>
+<pre><code>## [1] 0.5</code></pre>
 <pre class="r"><code>mean(pull(hw1p1_df, char_vec))</code></pre>
 <pre><code>## Warning in mean.default(pull(hw1p1_df, char_vec)): argument is not numeric
 ## or logical: returning NA</code></pre>
@@ -404,7 +404,7 @@ summary {
 <pre><code>## Warning in mean.default(pull(hw1p1_df, fac_vec)): argument is not numeric
 ## or logical: returning NA</code></pre>
 <pre><code>## [1] NA</code></pre>
-<p>It was only possible to take the mean of the numeric variable “rsamp” (mean = 0.199), and the logical variable “log_vec”, (mean = 0.375).</p>
+<p>It was only possible to take the mean of the numeric variable “rsamp” (mean = -0.29), and the logical variable “log_vec”, (mean = 0.5).</p>
 </div>
 <div id="convert-variables-to-numeric" class="section level3">
 <h3>Convert variables to numeric</h3>
@@ -413,9 +413,22 @@ as.numeric(pull(hw1p1_df, char_vec))
 as.numeric(pull(hw1p1_df, fac_vec))</code></pre>
 <ol style="list-style-type: lower-alpha">
 <li>The logical vector converts to 0s and 1s; able to take the mean of 0s and 1s in previous step.</li>
-<li>The character vector will not convert to a numeric variable.</li>
-<li>The factor variable evaluates the input as a whole and assigns numeric values to each category alphabetically.</li>
+<li>The character vector will not convert to a numeric variable; cant take the mean in previous step.</li>
+<li>The factor variable evaluates the input as a whole and assigns numeric values to each category alphabetically; even though categories can be numeric, taking the mean of a discrete categorical variable organized alphabetically is meaningless.</li>
 </ol>
+</div>
+<div id="manipulate-variables" class="section level3">
+<h3>Manipulate variables</h3>
+<pre class="r"><code>as.numeric(pull(hw1p1_df, log_vec))*pull(hw1p1_df, rsamp)</code></pre>
+<pre><code>## [1] 0.14244999 0.00000000 0.00000000 0.08413995 0.69699573 0.13904483
+## [7] 0.00000000 0.00000000</code></pre>
+<pre class="r"><code>as.factor(pull(hw1p1_df, log_vec))*pull(hw1p1_df, rsamp)</code></pre>
+<pre><code>## Warning in Ops.factor(as.factor(pull(hw1p1_df, log_vec)), pull(hw1p1_df, :
+## '*' not meaningful for factors</code></pre>
+<pre><code>## [1] NA NA NA NA NA NA NA NA</code></pre>
+<pre class="r"><code>as.numeric(as.factor(pull(hw1p1_df, log_vec)))*pull(hw1p1_df, rsamp)</code></pre>
+<pre><code>## [1]  0.2849000 -0.1120587 -1.5155646  0.1682799  1.3939915  0.2780897
+## [7] -1.2485946 -0.5066519</code></pre>
 </div>
 </div>
 
