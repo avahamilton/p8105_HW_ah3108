@@ -13,7 +13,7 @@ library(tidyverse)
 # Problem 1:
 
 ### Create dataframe
-```{r}
+```{r create_df1}
 
 hw1p1_df = tibble(
   rsamp = rnorm(8),
@@ -27,7 +27,7 @@ hw1p1_df = tibble(
 
 ### Take mean of variables in dataframe
 
-```{r}
+```{r mean_Df}
 
 mean(pull(hw1p1_df, rsamp))
 mean(pull(hw1p1_df, log_vec))
@@ -41,7 +41,7 @@ It was only possible to take the mean of the numeric variable "rsamp" (mean = `r
 
 ### Convert variables to numeric
 
-```{r, eval = F}
+```{r eval_df, eval = F}
 
 as.numeric(pull(hw1p1_df, log_vec))
 as.numeric(pull(hw1p1_df, char_vec))
@@ -56,7 +56,7 @@ c. The factor variable evaluates the input as a whole and assigns numeric values
 
 ### Manipulate variables
 
-```{r}
+```{r manip_vars}
 as.numeric(pull(hw1p1_df, log_vec))*pull(hw1p1_df, rsamp)
 
 as.factor(pull(hw1p1_df, log_vec))*pull(hw1p1_df, rsamp)
@@ -70,7 +70,7 @@ as.numeric(as.factor(pull(hw1p1_df, log_vec)))*pull(hw1p1_df, rsamp)
 
 ### Create dataframe
 
-```{r}
+```{r create_df2}
 
 hw1p2_df = tibble(
   x = rnorm(500),
@@ -91,7 +91,7 @@ hw1p2_df = tibble(
 
 #### Logical color scale
 
-```{r}
+```{r plotlog}
 
 ggplot(hw1p2_df, aes(x = x, y = y, color = xyGT1_log)) + geom_point()
 
@@ -99,7 +99,7 @@ ggplot(hw1p2_df, aes(x = x, y = y, color = xyGT1_log)) + geom_point()
 ```
 
 #### Numeric color scale
-```{r}
+```{r plotnum}
 
 ggplot(hw1p2_df, aes(x = x, y = y, color = num_log)) + geom_point()
 
@@ -107,13 +107,24 @@ ggplot(hw1p2_df, aes(x = x, y = y, color = num_log)) + geom_point()
 
 
 #### Factor color scale
-```{r}
+```{r plotfac}
 
 ggplot(hw1p2_df, aes(x = x, y = y, color = fac_log)) + geom_point()
 
 ```
 
+#### Comments
+
+The color scales for the logical and factor variables are the same. Both have discrete colors representing the different levels. The color scale using the numeric vector shows a continuous color scale over the range of the numeric values, in this case 0 to 1. However, as there are only two values in the numeric vector, the plot is made up of two colors.
 
 
+```{r export plot, include = F}
+
+ggplot(hw1p2_df, aes(x = x, y = y, color = xyGT1_log)) + geom_point()
+
+
+ggsave("firstScatter.pdf")
+
+```
 
 
