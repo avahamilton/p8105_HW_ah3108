@@ -64,3 +64,56 @@ as.factor(pull(hw1p1_df, log_vec))*pull(hw1p1_df, rsamp)
 as.numeric(as.factor(pull(hw1p1_df, log_vec)))*pull(hw1p1_df, rsamp)
 ```
 
+
+
+# Problem 2:
+
+### Create dataframe
+
+```{r}
+
+hw1p2_df = tibble(
+  x = rnorm(500),
+  y = rnorm(500),
+  xyGT1_log = x + y > 1,
+  num_log = as.numeric(xyGT1_log),
+  fac_log = as.factor(xyGT1_log)
+)
+```
+
+### Dataframe description
+
+- The dataframe hw1p2_df has `r nrow(hw1p2_df)` rows and `r ncol(hw1p2_df)` columns. 
+- The variable x is a random sample from a standard normal distribution of size 500. The variable x has a mean of `r mean(pull(hw1p2_df, x))`, a median of `r median(pull(hw1p2_df, x))`, and standard deviation of `r sd(pull(hw1p2_df, x))`.
+- The proportion of cases for which `x + y > 1` is `r mean(pull(hw1p2_df, xyGT1_log))`.
+
+### Scatterplots of y vs x
+
+#### Logical color scale
+
+```{r}
+
+ggplot(hw1p2_df, aes(x = x, y = y, color = xyGT1_log)) + geom_point()
+
+
+```
+
+#### Numeric color scale
+```{r}
+
+ggplot(hw1p2_df, aes(x = x, y = y, color = num_log)) + geom_point()
+
+```
+
+
+#### Factor color scale
+```{r}
+
+ggplot(hw1p2_df, aes(x = x, y = y, color = fac_log)) + geom_point()
+
+```
+
+
+
+
+
