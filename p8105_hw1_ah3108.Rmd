@@ -2,7 +2,7 @@
 title: "p8105_hw1_ah3108"
 author: "Ava Hamilton"
 date: "9/14/2019"
-output: html_document
+output: github_document
 ---
 
 
